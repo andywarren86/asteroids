@@ -15,6 +15,7 @@ export function magnitude( v ) {
   return Math.sqrt( Math.pow( v.x, 2 ) + Math.pow( v.y, 2 ) );
 }
 
+/** Angle in degress of this vector */
 export function heading( v ) {
   const deg = -Math.atan( v.x / v.y ) * 180 / Math.PI;
   if ( v.x > 0 && v.y > 0 ) {
