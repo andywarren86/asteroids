@@ -1,26 +1,32 @@
-const Vector = require('../vectors').default;
-// import Vectors from '../vectors';
-
-console.log("Vector", Vector);
+import Vector from '../vectors';
 
 describe("vector.js", () => {
-  test('creates new vector', () => {
+  test('new Vector()', () => {
     const v = new Vector(1, 2);
     expect(v.x).toBe(1);
     expect(v.y).toBe(2);
   });
 
   test('fromAngle()', () => {
-    const v1 = Vector.fromAngle( 45, Math.sqrt(2) );
-    expect(v1.x).toBeCloseTo( 1 );
-    expect(v1.y).toBeCloseTo( 1 );
+    const v1 = Vector.fromAngle(45, Math.sqrt(2));
+    expect(v1.x).toBeCloseTo(1);
+    expect(v1.y).toBeCloseTo(1);
 
-    const v2 = Vector.fromAngle( 30, 2 );
-    expect( v2.x ).toBeCloseTo( Math.sqrt(3) );
-    expect( v2.y ).toBeCloseTo( 1 );
+    const v2 = Vector.fromAngle(30, 2);
+    expect(v2.x).toBeCloseTo(Math.sqrt(3));
+    expect(v2.y).toBeCloseTo(1);
   })
 
-  test('Vector.add()', () => {
+  test('add()', () => {
+    const v1 = new Vector(1, 2);
+    const v2 = new Vector(2, -4);
+    const v3 = v1.add(v2);
+
+    expect(v3).toEqual({ x: 3, y: -2 });
+    expect(v1).toEqual({ x: 1, y: 2 });
+  })
+
+  test('static add()', () => {
     const v1 = new Vector(1, 2);
     const v2 = new Vector(2, 3);
     const v3 = Vector.add(v1, v2);
@@ -30,6 +36,7 @@ describe("vector.js", () => {
 
   test('mag()', () => {
     expect(new Vector(3, 4).mag()).toBe(5);
+    expect(new Vector(-3, -4).mag()).toBe(5);
   });
 
   test('angle()', () => {
@@ -43,4 +50,3 @@ describe("vector.js", () => {
     expect(new Vector(1, -1).angle()).toBe(315);
   })
 })
-

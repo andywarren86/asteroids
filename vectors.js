@@ -1,7 +1,7 @@
 const toDegs = (rads) => rads * 180 / Math.PI;
 const toRads = (degs) => degs * Math.PI / 180;
 
-export default class Vector {
+class Vector {
   constructor(x, y) {
     this.x = x;
     this.y = y;
@@ -13,8 +13,12 @@ export default class Vector {
 
   /** Angle in degrees */
   angle() {
-    const degs = toDegs(Math.atan2(this.y,this.x));
+    const degs = toDegs(Math.atan2(this.y, this.x));
     return degs < 0 ? degs + 360 : degs;
+  }
+
+  add(v) {
+    return Vector.add(v, this);
   }
 }
 
@@ -24,7 +28,6 @@ Vector.fromAngle = (angle, magnitude) => {
   return new Vector(x, y);
 }
 
-Vector.add = (v1, v2) => ({
-  x: v1.x + v2.x,
-  y: v1.y + v2.y
-});
+Vector.add = (v1, v2) => new Vector(v1.x + v2.x, v1.y + v2.y)
+
+export default Vector;
