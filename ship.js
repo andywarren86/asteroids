@@ -1,5 +1,6 @@
 import * as keys from './input.js';
 import Vector from './vectors.js';
+import { adjustPositionForEdge } from './global.js';
 
 export default class Ship {
 
@@ -50,12 +51,7 @@ export default class Ship {
     this.pos = this.pos.add(this.vel);
 
     // adjust for going off screen
-    const viewWidth = this.app.view.width;
-    const viewHeight = this.app.view.height;
-    if (this.pos.x > viewWidth) this.pos.x = 0;
-    if (this.pos.x < 0) this.pos.x = viewWidth;
-    if (this.pos.y > viewHeight) this.pos.y = 0;
-    if (this.pos.y < 0) this.pos.y = viewHeight;
+    this.pos = adjustPositionForEdge(this.pos);
   }
 
   draw() {
