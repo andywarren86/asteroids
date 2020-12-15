@@ -1,6 +1,7 @@
 import Vector from './vectors.js';
 import { adjustPositionForEdge, WIDTH, HEIGHT } from './global.js';
 
+const RADIUS = 20;
 
 export default class Asteroid {
   constructor(app) {
@@ -20,7 +21,7 @@ export default class Asteroid {
   draw() {
     this.graphics.clear();
     this.graphics.beginFill(0xcccccc);
-    this.graphics.drawCircle( this.pos.x, this.pos.y, 20 );
+    this.graphics.drawCircle( this.pos.x, this.pos.y, RADIUS );
     this.graphics.endFill();
   }
 }

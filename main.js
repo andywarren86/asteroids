@@ -56,6 +56,19 @@ app.ticker.add(() => {
     b.pos = adjustPositionForEdge( b.pos );
   });
 
+  // check each bullet for collisions with asteroids
+  bullets.forEach(b => {
+    asteroids.forEach( a => {
+      const diff = b.pos.subtract(a.pos);
+      if ( diff.mag() < 20 ) {
+        // apply force to asteroid
+        a.vel = a.vel.add( b.vel.mult( 0.1 ) );
+        // remove bullet
+        b.ttl = 0;
+      }
+    })
+  });
+
   // create new bullet if spacebar pressed and sufficient time has elapsed
   // since last bullet was fired
   if (isSpace) {

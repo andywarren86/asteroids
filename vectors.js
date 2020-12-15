@@ -20,6 +20,14 @@ class Vector {
   add(v) {
     return Vector.add(v, this);
   }
+
+  subtract(v) {
+    return Vector.subtract( this, v );
+  }
+
+  mult(s) {
+    return new Vector( this.x * s, this.y * s);
+  }
 }
 
 Vector.fromAngle = (angle, magnitude) => {
@@ -29,5 +37,8 @@ Vector.fromAngle = (angle, magnitude) => {
 }
 
 Vector.add = (v1, v2) => new Vector(v1.x + v2.x, v1.y + v2.y)
+
+/* Subtract v2 from v1 */
+Vector.subtract = (v1, v2) => new Vector(v1.x - v2.x, v1.y - v2.y);
 
 export default Vector;
