@@ -20,7 +20,7 @@ export default class Asteroid {
 
   draw() {
     this.graphics.clear();
-    this.graphics.beginFill(0xcccccc);
+    this.graphics.beginFill(0x777777);
     this.graphics.drawCircle( this.pos.x, this.pos.y, RADIUS );
     this.graphics.endFill();
   }
